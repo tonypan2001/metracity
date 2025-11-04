@@ -40,10 +40,10 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center max-w-4xl"
         >
-          <motion.h1 className="text-6xl md:text-8xl xl:text-9xl font-semibold tracking-tight leading-[0.92] drop-shadow-[0_0_24px_rgba(44,245,255,0.15)] bg-gradient-to-r from-rose-400 via-amber-400 to-lime-300 bg-clip-text text-transparent">
+          <motion.h1 className="text-6xl md:text-8xl xl:text-9xl font-semibold tracking-tight leading-[0.92] drop-shadow-[0_0_24px_rgba(132,204,22,0.2)] bg-gradient-to-r from-lime-300 via-lime-400 to-lime-500 bg-clip-text text-transparent">
             Noodle House
           </motion.h1>
-          <p className="mt-5 text-lg md:text-2xl tracking-wide bg-gradient-to-r from-rose-300 via-amber-300 to-lime-200 bg-clip-text text-transparent">
+          <p className="mt-5 text-lg md:text-2xl tracking-wide bg-gradient-to-r from-lime-200 via-lime-300 to-lime-400 bg-clip-text text-transparent">
             Hand‑Pulled Noodles, Made Fresh Daily
           </p>
         </motion.div>
@@ -55,11 +55,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 0.9, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-          className="flex flex-col items-center gap-2 text-white/70"
+          className="flex flex-col items-center gap-2 text-lime-300/80"
         >
-          <div className="h-6 w-3 rounded-full border border-white/40 relative overflow-hidden">
+          <div className="h-6 w-3 rounded-full border border-lime-300/40 relative overflow-hidden">
             <motion.span
-              className="absolute left-1/2 top-1 h-1 w-1 -translate-x-1/2 rounded-full bg-white/70"
+              className="absolute left-1/2 top-1 h-1 w-1 -translate-x-1/2 rounded-full bg-lime-300/80"
               animate={{ y: [0, 12, 0], opacity: [1, 0.4, 1] }}
               transition={{
                 duration: 1.5,

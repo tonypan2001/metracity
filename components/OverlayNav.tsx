@@ -23,7 +23,7 @@ export default function OverlayNav() {
               transition={{ duration: 0.5, ease: 'easeOut' }}
               className="text-lg font-semibold tracking-tight"
             >
-              <span className="bg-gradient-to-r from-rose-400 via-amber-400 to-lime-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-lime-300 via-lime-400 to-lime-500 bg-clip-text text-transparent">
                 Noodle House
               </span>
             </motion.span>

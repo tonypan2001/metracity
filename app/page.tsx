@@ -8,7 +8,7 @@ export default function Home() {
   useLenis(true);
 
   return (
-    <main className="relative isolate min-h-screen w-full text-white">
+    <main className="relative isolate min-h-screen w-full text-lime-300">
       {/* City canvas is rendered inside Hero only */}
       <OverlayNav />
 
