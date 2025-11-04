@@ -92,7 +92,12 @@ export default function Hero() {
       </div>
 
       {/* Top-left big + detail text (scopes to hero only) */}
-      <div className="pointer-events-none absolute left-6 top-24 md:top-28 z-40 text-left">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+        className="pointer-events-none absolute left-6 top-24 md:top-28 z-40 text-left"
+      >
         <h2
           className="text-3xl md:text-5xl font-bold leading-tight"
           style={{ color: "#b9ff4f" }}
@@ -102,10 +107,15 @@ export default function Hero() {
         <p className="mt-1 max-w-xs text-sm md:text-base text-white/80">
           {content.hero.topLeft.description}
         </p>
-      </div>
+      </motion.div>
 
       {/* Bottom-left big + detail text (scopes to hero only) */}
-      <div className="pointer-events-none absolute left-6 bottom-6 z-40 text-left">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+        className="pointer-events-none absolute left-6 bottom-6 z-40 text-left"
+      >
         <h3
           className="text-2xl md:text-3xl font-semibold"
           style={{ color: "#b9ff4f" }}
@@ -115,7 +125,7 @@ export default function Hero() {
         <p className="mt-1 text-sm md:text-base text-white/80">
           {content.hero.bottomLeft.description}
         </p>
-      </div>
+      </motion.div>
 
       {/* Scroll indicator */}
       <div className="pointer-events-none fixed bottom-6 left-0 right-0 z-30 flex justify-center">
