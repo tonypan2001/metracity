@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { useRef } from "react";
 
 export default function Hero() {
@@ -15,13 +16,23 @@ export default function Hero() {
     <section
       id="hero"
       ref={ref}
-      className="relative z-10 h-screen w-full isolate"
+      className="relative z-10 h-screen w-full isolate bg-black"
     >
-      {/* Readability gradient (middle layer) */}
-      <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+      {/* Background image */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Image
+          src="/imgs/wood_table_bg.png"
+          alt="Wood table background"
+          fill
+          priority
+          className="object-cover"
+        />
+      </div>
+      {/* Readability gradient (above background) */}
+      <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
 
       {/* Text content (top layer) */}
-      <div className="relative z-10 h-full w-full grid place-items-center px-6 pointer-events-auto">
+      <div className="relative z-20 h-full w-full grid place-items-center px-6 pointer-events-auto">
         <motion.div
           style={{ y }}
           initial={{ opacity: 0, y: 20 }}
@@ -39,7 +50,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="pointer-events-none absolute bottom-6 left-0 right-0 z-20 flex justify-center">
+      <div className="pointer-events-none absolute bottom-6 left-0 right-0 z-30 flex justify-center">
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 0.9, y: 0 }}
