@@ -77,6 +77,21 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center"
           >
+            <motion.div
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.05 }}
+              className="mb-4 flex justify-center"
+            >
+              <Image
+                src="/logo-ktt.svg"
+                alt="Khuay Teui Thai logo"
+                width={64}
+                height={64}
+                priority
+                className="w-12 h-12 md:w-16 md:h-16"
+              />
+            </motion.div>
             <h1
               className="text-5xl md:text-7xl font-semibold tracking-tight"
               style={{ color: "#b9ff4f" }}
