@@ -3,12 +3,12 @@
 import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
 import CityInstanced from './CityInstanced'
-import ScrollOrchestrator from './ScrollOrchestrator'
+import HeroScrollOrchestrator from './HeroScrollOrchestrator'
 import { shots } from '@/lib/cameraPath'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import * as THREE from 'three'
 
-export default function CanvasScene() {
+export default function HeroCanvas() {
   const initial = shots[0]
   return (
     <Canvas
@@ -16,7 +16,7 @@ export default function CanvasScene() {
       gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping }}
       camera={{ position: initial.pos as unknown as THREE.Vector3Tuple, fov: 50, near: 0.1, far: 1000 }}
       dpr={[1, 2]}
-      className="fixed inset-0 z-0 pointer-events-none"
+      className="absolute inset-0 z-0 pointer-events-none"
     >
       <color attach="background" args={[`#05070c`]} />
       <fog attach="fog" args={[`#05070c`, 40, 240]} />
@@ -42,11 +42,7 @@ export default function CanvasScene() {
         <Bloom intensity={1.2} luminanceThreshold={0.25} luminanceSmoothing={0.2} mipmapBlur />
       </EffectComposer>
 
-      {/* Comment out OrbitControls in production; useful during dev */}
-      {/* <OrbitControls enablePan={false} /> */}
-
-      <ScrollOrchestrator />
-      {/* <Perf position="bottom-left" minimal /> */}
+      <HeroScrollOrchestrator />
     </Canvas>
   )
 }

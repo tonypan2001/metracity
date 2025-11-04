@@ -1,6 +1,7 @@
 "use client"
 
 import { motion, useScroll, useTransform } from 'framer-motion'
+import HeroCanvas from '@/components/HeroCanvas'
 import { useRef } from 'react'
 
 /**
@@ -19,16 +20,17 @@ export default function Hero() {
 
   // Parallax text upward slightly as you scroll through the hero
   const y = useTransform(scrollYProgress, [0, 1], [0, -40])
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.7])
 
   return (
-    <section id="hero" ref={ref} className="relative h-screen w-full overflow-hidden">
+    <section id="hero" ref={ref} className="relative h-screen w-full overflow-hidden isolate">
+      {/* 3D City background (pinned while scrolling through Hero) */}
+      <HeroCanvas />
       {/* Readability gradient from bottom to top */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
-      <div className="relative z-10 h-full w-full grid place-items-center px-6">
+      <div className="relative z-20 h-full w-full grid place-items-center px-6">
         <motion.div
-          style={{ y, opacity }}
+          style={{ y }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -51,7 +53,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="pointer-events-none absolute bottom-6 left-0 right-0 z-10 flex justify-center">
+      <div className="pointer-events-none absolute bottom-6 left-0 right-0 z-20 flex justify-center">
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 0.9, y: 0 }}

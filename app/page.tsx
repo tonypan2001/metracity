@@ -1,6 +1,5 @@
 "use client";
 
-import CanvasScene from "@/components/CanvasScene";
 import { useLenis } from "@/lib/useLenis";
 import Hero from "@/components/sections/Hero";
 import OverlayNav from "@/components/OverlayNav";
@@ -10,10 +9,10 @@ export default function Home() {
 
   return (
     <main className="min-h-screen w-full text-white">
-      <CanvasScene />
+      {/* City canvas is rendered inside Hero only */}
       <OverlayNav />
 
-      <div className="relative z-10">
+      <div className="relative z-50">
         {/* Hero section (pinned and orchestrated) */}
         <Hero />
         <Section
