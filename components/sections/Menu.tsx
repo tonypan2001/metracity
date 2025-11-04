@@ -17,6 +17,11 @@ export default function MenuSection() {
   });
 
   const total = ITEMS.length;
+  // Fade-in header/subheader after section is pinned (on entering)
+  const headerOpacity = useTransform(scrollYProgress, [0, 0.06, 0.14], [0, 0, 1]);
+  const headerY = useTransform(scrollYProgress, [0, 0.14], [12, 0]);
+  const subOpacity = useTransform(scrollYProgress, [0.12, 0.22], [0, 1]);
+  const subY = useTransform(scrollYProgress, [0.12, 0.22], [8, 0]);
 
   return (
     <section id="menu" className="relative z-10 w-full py-16">
@@ -24,26 +29,21 @@ export default function MenuSection() {
         <div className="sticky top-0 h-screen">
           {/* Left-center section header */}
           <motion.div
-            initial={{ opacity: 0, y: 12, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
             className="pointer-events-none absolute left-6 top-1/2 -translate-y-1/2 z-20 text-left"
           >
-            <h2
+            <motion.h2
               className="text-3xl md:text-5xl font-bold leading-tight"
-              style={{ color: "#b9ff4f" }}
+              style={{ color: "#b9ff4f", opacity: headerOpacity, y: headerY }}
             >
               {content.menu.header.split(" ").map((word, idx) => (
                 <span key={idx} className="block">
                   {word}
                 </span>
               ))}
-            </h2>
+            </motion.h2>
             {content.menu.subheader && (
               <motion.p
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: 0.25 }}
+                style={{ opacity: subOpacity, y: subY }}
                 className="mt-2 max-w-xs text-sm md:text-base text-white/80"
               >
                 {content.menu.subheader}
