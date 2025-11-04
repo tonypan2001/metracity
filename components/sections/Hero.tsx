@@ -34,12 +34,17 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="text-center max-w-4xl"
         >
-          <h1 className="text-6xl md:text-8xl font-semibold tracking-tight leading-[0.95]">
-            <span className="bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-indigo-400 bg-clip-text text-transparent">
+          <h1 className="text-6xl md:text-8xl xl:text-9xl font-semibold tracking-tight leading-[0.92] drop-shadow-[0_0_24px_rgba(44,245,255,0.15)]">
+            <motion.span
+              className="bg-[linear-gradient(90deg,#22d3ee_0%,#a855f7_50%,#60a5fa_100%)] bg-clip-text text-transparent bg-[length:200%_100%]"
+              initial={{ backgroundPositionX: '0%' }}
+              animate={{ backgroundPositionX: '100%' }}
+              transition={{ duration: 4.5, ease: 'easeInOut', repeat: Infinity, repeatType: 'reverse' }}
+            >
               MetraCity
-            </span>
+            </motion.span>
           </h1>
-          <p className="mt-4 text-lg md:text-2xl text-white/80">
+          <p className="mt-5 text-lg md:text-2xl text-white/80 tracking-wide">
             Smart City Motion Experience
           </p>
         </motion.div>
@@ -66,4 +71,3 @@ export default function Hero() {
     </section>
   )
 }
-
