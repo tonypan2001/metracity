@@ -3,31 +3,28 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-type Props<E extends keyof JSX.IntrinsicElements = "span"> = {
+type Props = {
   text: string;
-  as?: E;
+  as?: "span" | "h1" | "h2" | "h3" | "p" | "div";
   className?: string;
   style?: React.CSSProperties;
   amplitude?: number; // px to move up
   duration?: number; // seconds for full up-and-down cycle
   stagger?: number; // seconds between character starts
   stackWords?: boolean; // render each word on its own line
-} & Omit<JSX.IntrinsicElements[E], "children" | "className" | "style">;
+};
 
-export default function HoverBounceText<E extends keyof JSX.IntrinsicElements = "span">(
-  {
-    text,
-    as,
-    className,
-    style,
-    amplitude = 8,
-    duration = 0.45,
-    stagger = 0.02,
-    stackWords = false,
-    ...rest
-  }: Props<E>
-) {
-  const Tag = (as ?? "span") as any;
+export default function HoverBounceText({
+  text,
+  as = "span",
+  className,
+  style,
+  amplitude = 8,
+  duration = 0.45,
+  stagger = 0.02,
+  stackWords = false,
+}: Props) {
+  const Tag = as;
   const [hovered, setHovered] = useState(false);
 
   const renderWord = (word: string, wordIdx: number) => {
@@ -59,7 +56,6 @@ export default function HoverBounceText<E extends keyof JSX.IntrinsicElements = 
 
   return (
     <Tag
-      {...(rest as any)}
       className={className}
       style={style}
       onMouseEnter={() => setHovered(true)}
@@ -71,4 +67,3 @@ export default function HoverBounceText<E extends keyof JSX.IntrinsicElements = 
     </Tag>
   );
 }
-
