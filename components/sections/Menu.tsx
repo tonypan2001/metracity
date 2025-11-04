@@ -33,7 +33,7 @@ export default function MenuSection() {
           <SmokeBackground className="z-0 pointer-events-none" opacity={0.35} />
           {/* Left-center section header */}
           <motion.div
-            className="pointer-events-none absolute left-6 top-1/2 -translate-y-1/2 z-20 text-left"
+            className="pointer-events-auto absolute left-6 top-1/2 -translate-y-1/2 z-20 text-left"
           >
             <motion.h2
               className="text-3xl md:text-5xl font-bold leading-tight"
