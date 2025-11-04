@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 import { content } from '@/contants/content'
 
@@ -47,16 +48,32 @@ export default function OverlayNav() {
       <div className="mx-auto max-w-6xl px-5 py-4">
         <div className="pointer-events-auto flex items-center justify-between rounded-full border border-white/10 bg-black/30 backdrop-blur-md">
           <div className="px-4 py-2">
-            <motion.span
-              initial={{ opacity: 0, y: -6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
-              className="text-lg font-semibold tracking-tight"
-            >
-              <span className="bg-gradient-to-r from-lime-300 via-lime-400 to-lime-500 bg-clip-text text-transparent">
-                {content.site.name}
-              </span>
-            </motion.span>
+            <div className="flex items-center gap-2">
+              <motion.div
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: 'easeOut' }}
+                className="shrink-0"
+              >
+                <Image
+                  src="/logo-ktt.svg"
+                  alt="Khuay Teui Thai logo"
+                  width={28}
+                  height={28}
+                  priority
+                />
+              </motion.div>
+              <motion.span
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: 'easeOut', delay: 0.05 }}
+                className="text-lg font-semibold tracking-tight"
+              >
+                <span className="bg-gradient-to-r from-lime-300 via-lime-400 to-lime-500 bg-clip-text text-transparent">
+                  {content.site.name}
+                </span>
+              </motion.span>
+            </div>
           </div>
           <nav className="flex items-center gap-1 pr-1">
             {/** Use one shared sliding highlight for hover/active */}
