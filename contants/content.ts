@@ -9,7 +9,10 @@ export const content = {
     },
   },
   nav: {
-    links: [{ id: "menu", label: "Menu" }],
+    links: [
+      { id: "hero", label: "Home" },
+      { id: "menu", label: "Menu" },
+    ],
   },
   hero: {
     headline: "KhuayTeiThai",

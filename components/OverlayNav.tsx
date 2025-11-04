@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { motion } from 'framer-motion'
 
 import { content } from '@/contants/content'
@@ -8,6 +8,7 @@ import { content } from '@/contants/content'
 const links = content.nav.links
 
 export default function OverlayNav() {
+  const [hovered, setHovered] = useState<string | null>(null)
   const onNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault()
     const el = document.getElementById(id)
@@ -36,8 +37,19 @@ export default function OverlayNav() {
                 key={l.id}
                 href={`#${l.id}`}
                 onClick={(e) => onNavClick(e, l.id)}
-                className="rounded-full px-3 py-2 text-sm text-white/80 hover:text-white transition-colors"
+                onMouseEnter={() => setHovered(l.id)}
+                onMouseLeave={() => setHovered(null)}
+                onFocus={() => setHovered(l.id)}
+                onBlur={() => setHovered(null)}
+                className="relative rounded-full px-3 py-2 text-sm text-white/80 hover:text-white transition-colors"
               >
+                {hovered === l.id && (
+                  <motion.span
+                    layoutId="navHover"
+                    className="absolute inset-0 rounded-full bg-white/10"
+                    transition={{ type: 'spring', stiffness: 500, damping: 40 }}
+                  />
+                )}
                 {l.label}
               </a>
             ))}
