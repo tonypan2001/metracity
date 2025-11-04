@@ -18,7 +18,7 @@ export default function OverlayNav() {
   }, [])
 
   return (
-    <div className="pointer-events-none fixed top-0 left-0 right-0 z-20">
+    <div className="pointer-events-none fixed top-0 left-0 right-0 z-[60]">
       <div className="mx-auto max-w-6xl px-5 py-4">
         <div className="pointer-events-auto flex items-center justify-between rounded-full border border-white/10 bg-black/30 backdrop-blur-md">
           <div className="px-4 py-2">
@@ -50,4 +50,3 @@ export default function OverlayNav() {
     </div>
   )
 }
-
