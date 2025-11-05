@@ -28,6 +28,20 @@ export default function AboutSection() {
   const ref = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
 
+  // Desktop vs mobile: desktop uses progress-driven pin + animations; mobile uses while-in-view fades
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const onChange = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    setIsDesktop(mq.matches);
+    if (mq.addEventListener) mq.addEventListener("change", onChange);
+    else mq.addListener(onChange);
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener("change", onChange);
+      else mq.removeListener(onChange);
+    };
+  }, []);
+
   const headerOpacity = useTransform(scrollYProgress, [0, 0.08], [0, 1]);
   const headerY = useTransform(scrollYProgress, [0, 0.08], [12, 0]);
 
@@ -39,8 +53,8 @@ export default function AboutSection() {
 
   return (
     <section id="about" className="relative z-10 w-full py-16">
-      <div ref={ref} className="relative min-h-[260vh]">
-        <div className="sticky top-0 h-screen">
+      <div ref={ref} className="relative md:min-h-[260vh]">
+        <div className="md:sticky md:top-0 md:h-screen">
           <div className="mx-auto flex h-full w-full max-w-5xl flex-col md:justify-center gap-6 px-6 pt-20 md:pt-0">
             {/* Mobile-specific header to avoid overlap */}
             <h2 className="md:hidden text-3xl font-bold leading-tight">
@@ -53,13 +67,35 @@ export default function AboutSection() {
               <span style={{ color: "#b9ff4f" }}>{content.about.header}</span>
             </motion.h2>
 
-            <motion.p style={{ opacity: p1 }} className="text-white/85 text-base md:text-lg">
+            {/* Paragraphs: progress-driven on desktop, fade-in on mobile */}
+            <motion.p
+              style={isDesktop ? { opacity: p1 } : undefined}
+              initial={isDesktop ? undefined : { opacity: 0, y: 8 }}
+              whileInView={isDesktop ? undefined : { opacity: 1, y: 0 }}
+              viewport={isDesktop ? undefined : { once: true, amount: 0.25 }}
+              transition={isDesktop ? undefined : { duration: 0.5, ease: "easeOut" }}
+              className="text-white/85 text-base md:text-lg"
+            >
               {content.about.paragraphs[0]}
             </motion.p>
-            <motion.p style={{ opacity: p2 }} className="text-white/85 text-base md:text-lg">
+            <motion.p
+              style={isDesktop ? { opacity: p2 } : undefined}
+              initial={isDesktop ? undefined : { opacity: 0, y: 8 }}
+              whileInView={isDesktop ? undefined : { opacity: 1, y: 0 }}
+              viewport={isDesktop ? undefined : { once: true, amount: 0.25 }}
+              transition={isDesktop ? undefined : { duration: 0.5, ease: "easeOut", delay: 0.05 }}
+              className="text-white/85 text-base md:text-lg"
+            >
               {content.about.paragraphs[1]}
             </motion.p>
-            <motion.p style={{ opacity: p3 }} className="text-white/85 text-base md:text-lg">
+            <motion.p
+              style={isDesktop ? { opacity: p3 } : undefined}
+              initial={isDesktop ? undefined : { opacity: 0, y: 8 }}
+              whileInView={isDesktop ? undefined : { opacity: 1, y: 0 }}
+              viewport={isDesktop ? undefined : { once: true, amount: 0.25 }}
+              transition={isDesktop ? undefined : { duration: 0.5, ease: "easeOut", delay: 0.1 }}
+              className="text-white/85 text-base md:text-lg"
+            >
               {content.about.paragraphs[2]}
             </motion.p>
 
