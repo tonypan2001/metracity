@@ -42,22 +42,26 @@ export default function AboutSection() {
       <div ref={ref} className="relative min-h-[260vh]">
         <div className="sticky top-0 h-screen">
           <div className="mx-auto flex h-full w-full max-w-5xl flex-col justify-center gap-6 px-6">
-            <motion.h2
+            {/* White card for About content */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
               style={{ opacity: headerOpacity, y: headerY }}
-              className="text-3xl md:text-5xl font-bold leading-tight"
+              className="rounded-xl border border-black/5 bg-white/95 p-5 shadow-xl md:p-6"
             >
-              <span style={{ color: "#b9ff4f" }}>{content.about.header}</span>
-            </motion.h2>
+              <h2 className="text-3xl md:text-5xl font-bold leading-tight">
+                <span style={{ color: "#b9ff4f" }}>{content.about.header}</span>
+              </h2>
 
-            <motion.p style={{ opacity: p1 }} className="text-white/85 text-base md:text-lg">
-              {content.about.paragraphs[0]}
-            </motion.p>
-            <motion.p style={{ opacity: p2 }} className="text-white/85 text-base md:text-lg">
-              {content.about.paragraphs[1]}
-            </motion.p>
-            <motion.p style={{ opacity: p3 }} className="text-white/85 text-base md:text-lg">
-              {content.about.paragraphs[2]}
-            </motion.p>
+              <motion.p style={{ opacity: p1 }} className="mt-4 text-black/90 text-base md:text-lg">
+                {content.about.paragraphs[0]}
+              </motion.p>
+              <motion.p style={{ opacity: p2 }} className="mt-3 text-black/90 text-base md:text-lg">
+                {content.about.paragraphs[1]}
+              </motion.p>
+              <motion.p style={{ opacity: p3 }} className="mt-3 text-black/90 text-base md:text-lg">
+                {content.about.paragraphs[2]}
+              </motion.p>
+            </motion.div>
 
             {/* Stats: 3 by 1 column (3 columns, 1 row) */}
             <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
