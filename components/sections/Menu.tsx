@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { content } from "@/contants/content";
 import type { MenuItem } from "@/types/menu";
 import HoverBounceText from "@/components/ui/HoverBounceText";
@@ -26,12 +26,12 @@ export default function MenuSection() {
 
   return (
     <section id="menu" className="relative z-10 w-full py-16">
-      <div ref={ref} className="relative min-h-[300vh]">
-        <div className="sticky top-0 h-screen">
+      <div ref={ref} className="relative md:min-h-[300vh]">
+        <div className="md:sticky md:top-0 md:h-screen">
           {/* removed smoke background for performance */}
           {/* Left-center section header */}
           <motion.div
-            className="pointer-events-auto absolute left-6 top-1/2 -translate-y-1/2 z-20 text-left"
+            className="hidden md:block pointer-events-auto absolute left-6 top-1/2 -translate-y-1/2 z-20 text-left"
           >
             <motion.h2
               className="text-3xl md:text-5xl font-bold leading-tight"
@@ -48,7 +48,16 @@ export default function MenuSection() {
               </motion.p>
             )}
           </motion.div>
-          <div className="relative z-10 mx-auto flex h-full w-full max-w-5xl flex-col justify-center gap-6 px-6 py-10">
+          <div className="relative z-10 mx-auto flex md:h-full w-full max-w-5xl flex-col md:justify-center gap-6 px-6 pt-20 md:pt-10 pb-10">
+            {/* Mobile header to avoid overlap with nav */}
+            <div className="md:hidden">
+              <h2 className="text-3xl font-bold leading-tight" style={{ color: "#b9ff4f" }}>
+                {content.menu.header}
+              </h2>
+              {content.menu.subheader && (
+                <p className="mt-2 max-w-xs text-sm text-white/80">{content.menu.subheader}</p>
+              )}
+            </div>
             {ITEMS.map((item, i) => (
               <MenuCard
                 key={item.id}
@@ -76,6 +85,19 @@ function MenuCard({
   total: number;
   progress: ReturnType<typeof useScroll>["scrollYProgress"];
 }) {
+  // Desktop uses progress-driven animation; mobile uses while-in-view fade
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const onChange = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    setIsDesktop(mq.matches);
+    if (mq.addEventListener) mq.addEventListener("change", onChange);
+    else mq.addListener(onChange);
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener("change", onChange);
+      else mq.removeListener(onChange);
+    };
+  }, []);
   const step = 1 / total;
   const appearStart = index * step;
   const appearEnd = appearStart + step * 0.5; // ease in during first half of its window
@@ -93,7 +115,11 @@ function MenuCard({
 
   return (
     <motion.div
-      style={{ y, opacity }}
+      style={isDesktop ? { y, opacity } : undefined}
+      initial={isDesktop ? undefined : { opacity: 0, y: 12 }}
+      whileInView={isDesktop ? undefined : { opacity: 1, y: 0 }}
+      viewport={isDesktop ? undefined : { once: true, amount: 0.25 }}
+      transition={isDesktop ? undefined : { duration: 0.5, ease: "easeOut" }}
       className="grid grid-cols-1 items-center gap-6 md:grid-cols-[1fr_1.2fr]"
     >
       <div className="relative h-56 w-full md:h-64">
