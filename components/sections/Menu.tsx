@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useRef } from "react";
 import { content } from "@/contants/content";
 import type { MenuItem } from "@/types/menu";
-import SmokeBackground from "@/components/SmokeBackground";
 import HoverBounceText from "@/components/ui/HoverBounceText";
 
 const ITEMS: MenuItem[] = content.menu.items as MenuItem[];
@@ -29,8 +28,7 @@ export default function MenuSection() {
     <section id="menu" className="relative z-10 w-full py-16">
       <div ref={ref} className="relative min-h-[300vh]">
         <div className="sticky top-0 h-screen">
-          {/* animated smoke background */}
-          <SmokeBackground className="z-0 pointer-events-none" opacity={0.35} />
+          {/* removed smoke background for performance */}
           {/* Left-center section header */}
           <motion.div
             className="pointer-events-auto absolute left-6 top-1/2 -translate-y-1/2 z-20 text-left"
