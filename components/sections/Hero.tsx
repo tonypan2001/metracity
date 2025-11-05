@@ -34,13 +34,13 @@ export default function Hero() {
       {/* Readability gradient (above background) */}
       <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
 
-      {/* Side center images */}
-      <div className="pointer-events-none absolute inset-0 z-[15]">
+      {/* Mobile images: centered horizontally, closer to header */}
+      <div className="md:hidden pointer-events-none absolute inset-0 z-[15]">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="absolute left-2 md:left-6 top-1/4 -translate-y-1/2"
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="absolute inset-x-0 top-1/4 flex justify-center"
         >
           <Image
             src="/imgs/3-noodles.png"
@@ -48,14 +48,14 @@ export default function Hero() {
             width={500}
             height={500}
             priority
-            className="w-40 h-40 md:w-72 md:h-72 lg:w-[500px] lg:h-[500px] object-contain drop-shadow-xl"
+            className="w-28 h-28 sm:w-32 sm:h-32 object-contain drop-shadow-xl"
           />
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-          className="absolute right-2 md:right-6 top-1/4 -translate-y-1/2"
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+          className="absolute inset-x-0 bottom-1/4 flex justify-center"
         >
           <Image
             src="/imgs/5-sauces.png"
@@ -63,7 +63,41 @@ export default function Hero() {
             width={500}
             height={500}
             priority
-            className="w-40 h-40 md:w-72 md:h-72 lg:w-[500px] lg:h-[500px] object-contain drop-shadow-xl"
+            className="w-28 h-28 sm:w-32 sm:h-32 object-contain drop-shadow-xl"
+          />
+        </motion.div>
+      </div>
+
+      {/* Desktop images: left and right */}
+      <div className="hidden md:block pointer-events-none absolute inset-0 z-[15]">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="absolute left-6 top-1/4 -translate-y-1/2"
+        >
+          <Image
+            src="/imgs/3-noodles.png"
+            alt="Assorted noodle bowls"
+            width={500}
+            height={500}
+            priority
+            className="md:w-72 md:h-72 lg:w-[500px] lg:h-[500px] object-contain drop-shadow-xl"
+          />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+          className="absolute right-6 top-1/4 -translate-y-1/2"
+        >
+          <Image
+            src="/imgs/5-sauces.png"
+            alt="Five seasoning bowls"
+            width={500}
+            height={500}
+            priority
+            className="md:w-72 md:h-72 lg:w-[500px] lg:h-[500px] object-contain drop-shadow-xl"
           />
         </motion.div>
       </div>
@@ -110,12 +144,12 @@ export default function Hero() {
         {/* Menu slider moved to its own section */}
       </div>
 
-      {/* Top-left big + detail text (scopes to hero only) */}
+      {/* Top-left big + detail text (mobile hidden to avoid overlap) */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-        className="pointer-events-auto absolute left-6 top-24 md:top-28 z-40 text-left"
+        className="hidden md:block pointer-events-auto absolute left-6 top-28 z-40 text-left"
       >
         <h2
           className="text-3xl md:text-5xl font-bold leading-tight"
@@ -128,12 +162,12 @@ export default function Hero() {
         </p>
       </motion.div>
 
-      {/* Bottom-left big + detail text (scopes to hero only) */}
+      {/* Bottom-left big + detail text (mobile hidden to avoid overlap) */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-        className="pointer-events-auto absolute left-6 bottom-6 z-40 text-left"
+        className="hidden md:block pointer-events-auto absolute left-6 bottom-6 z-40 text-left"
       >
         <h3
           className="text-2xl md:text-3xl font-semibold"
