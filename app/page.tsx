@@ -6,11 +6,10 @@ import HowWeWork from "@/components/sections/HowWeWork";
 import MenuSection from "@/components/sections/Menu";
 import AboutSection from "@/components/sections/About";
 import ContactSection from "@/components/sections/Contact";
-import Footer from "@/components/Footer";
+import Footer from "@/components/sections/Footer";
 import OverlayNav from "@/components/OverlayNav";
 
 export default function Home() {
-  
   return (
     <main className="relative isolate min-h-screen w-full text-lime-300">
       {/* City canvas is rendered inside Hero only */}
@@ -28,10 +27,9 @@ export default function Home() {
         <HowWeWork />
         {/* Contact section */}
         <ContactSection />
-        {/* Footer */}
-        <Footer />
       </div>
+      {/* Footer */}
+      <Footer />
     </main>
   );
 }
- 
