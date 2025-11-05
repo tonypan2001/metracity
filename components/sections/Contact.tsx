@@ -7,14 +7,14 @@ export default function ContactSection() {
   const c = content.contact;
   return (
     <section id="contact" className="relative z-10 w-full bg-black py-16">
-      <div className="mx-auto grid max-w-5xl items-start gap-8 px-6 md:grid-cols-[1.1fr_1fr]">
-        {/* Left: Google Map */}
+      <div className="mx-auto grid max-w-5xl items-stretch gap-8 px-6 md:grid-cols-[1.2fr_1fr]">
+        {/* Left: Full-width Google Map inside left column (no radius) */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="relative h-72 w-full overflow-hidden rounded-xl border border-lime-400/20 bg-black/40 md:h-96"
+          className="relative w-full overflow-hidden md:self-stretch min-h-72 md:min-h-[420px]"
         >
           <iframe
             src={c.mapEmbedUrl}
@@ -34,13 +34,9 @@ export default function ContactSection() {
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.05 }}
           className="text-left"
         >
-          <h2
-            className="text-3xl md:text-4xl font-bold"
-            style={{ color: "#b9ff4f" }}
-          >
+          <h2 className="text-3xl md:text-4xl font-bold" style={{ color: "#b9ff4f" }}>
             {c.header}
           </h2>
-
           <div className="mt-4 space-y-4 text-white/85">
             <div>
               <div className="text-white/60 text-sm uppercase tracking-wider">Address</div>
@@ -56,7 +52,7 @@ export default function ContactSection() {
             </div>
             <div>
               <div className="text-white/60 text-sm uppercase tracking-wider">Opening Hours</div>
-              <div className="mt-1 grid grid-cols-2 gap-2 md:grid-cols-1">
+              <div className="mt-2 space-y-2">
                 {c.hours.map((h, i) => (
                   <div key={i} className="flex items-center justify-between rounded-md border border-lime-400/15 bg-black/40 px-3 py-2">
                     <span>{h.label}</span>
@@ -71,4 +67,3 @@ export default function ContactSection() {
     </section>
   );
 }
-
