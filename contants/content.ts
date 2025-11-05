@@ -13,6 +13,7 @@ export const content = {
       { id: "hero", label: "Home" },
       { id: "menu", label: "Menu" },
       { id: "how-we-work", label: "How we work" },
+      { id: "about", label: "About" },
     ],
   },
   hero: {
@@ -110,6 +111,19 @@ export const content = {
         detail:
           "Hand‑rolled with a light rice‑flour binder for a bouncy, tender bite. Gently poached to keep them juicy, then warmed in the broth so they absorb flavor without turning tough.",
       },
+    ],
+  },
+  about: {
+    header: "About Us",
+    paragraphs: [
+      "We started as a tiny counter serving a handful of bowls a day. What we lacked in space we made up for in patience — learning to coax flavor from simple ingredients and to pull noodles that feel alive in the bowl.",
+      "Today our kitchens still move to the same rhythm: low flames, sharp knives, and hands that know when a dough is ready. We grow by teaching those rhythms to new teams and by sourcing from partners who care as much as we do.",
+      "Every franchise cooks with our shared standards, then adds a local accent. That’s how we keep the soul of the original shop while letting each neighborhood taste like itself.",
+    ],
+    stats: [
+      { id: "franchise", label: "Franchises", value: 24, suffix: "+" },
+      { id: "bowls", label: "Bowls Served", value: 1800000, suffix: "+" },
+      { id: "years", label: "Years of Craft", value: 12, suffix: "+" },
     ],
   },
 } as const;

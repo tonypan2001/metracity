@@ -4,6 +4,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Hero from "@/components/sections/Hero";
 import HowWeWork from "@/components/sections/HowWeWork";
 import MenuSection from "@/components/sections/Menu";
+import AboutSection from "@/components/sections/About";
 import OverlayNav from "@/components/OverlayNav";
 
 export default function Home() {
@@ -21,6 +22,8 @@ export default function Home() {
         <MenuSection />
         {/* How we work section */}
         <HowWeWork />
+        {/* About us section */}
+        <AboutSection />
       </div>
     </main>
   );
